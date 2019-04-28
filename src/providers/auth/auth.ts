@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
+
 
 /*
   Generated class for the AuthProvider provider.
@@ -24,6 +24,7 @@ export class AuthProvider {
 			 credentials.password);
   }
 
-
-
+  logout() {
+    this.afAuth.auth.signOut();
+  }
 }

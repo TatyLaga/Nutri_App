@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -11,7 +10,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 */
 @Injectable()
 export class ProvregisterProvider {
-  private user: firebase.User;
+
 
   constructor(public afRegister: AngularFireAuth) {
     console.log('Hello ProvregisterProvider Provider');

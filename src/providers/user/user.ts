@@ -15,13 +15,15 @@ export class UserProvider {
   userId : string;
   constructor(private _afDB: AngularFireDatabase,
     private afAuth : AngularFireAuth) {
-    console.log('Hello UserProvider Provider');
+      this.afAuth.authState.subscribe(user =>{
+        if (user) this.userId = user.uid
+      })
   }
 
   addUser(user: any): void {
-    this.users = this._afDB.object(`/users/`)
+    if(!this.userId) return;
+    this.users = this._afDB.object(`/users/${this.userId}`)
     this.users.set({ user });
-    return(user);
   }
 
   getUser(){

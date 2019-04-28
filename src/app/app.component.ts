@@ -4,7 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from "../pages/login/login";
 
-import { AuthProvider } from '../providers/auth/auth';
 import * as firebase from 'firebase/app';
 
 import { HomePage } from '../pages/home/home';
@@ -13,11 +12,15 @@ import { HomePage } from '../pages/home/home';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = LoginPage;
+  rootPage:any = HomePage;
   pages: Array<{title: string, component: any}>;
 
   constructor( public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
+     // side Menu navigation
+     this.pages = [
+      {title: 'Cerrar Sesión', component: "logout"}
+    ];
   }
 
   initializeApp() {
@@ -27,6 +30,8 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+
+
   }
 
   openPage(page) {

@@ -10,43 +10,25 @@
     </div>
 
     <!-- Login form -->
-    <form class="form" [formGroup]="validations_form" (ngSubmit)="tryLogin(validations_form.value)">
+    <form (ngSubmit)="login()">
       <ion-item>
         <ion-label floating>
           <ion-icon name="mail" item-start class="text-primary"></ion-icon>
           Correo
         </ion-label>
-        <ion-input type="text" formControlName="email"></ion-input>
+        <ion-input [(ngModel)]="email" name="email" type="text" value=""></ion-input>
       </ion-item>
-      <ion-item >
-      <div class="validation-errors">
-        <ng-container *ngFor="let validation of validation_messages.email">
-          <div class="error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
-            {{ validation.message }}
-          </div>
-        </ng-container>
-      </div>
-    </ion-item>
 
       <ion-item>
         <ion-label floating>
           <ion-icon name="lock" item-start class="text-primary"></ion-icon>
           Contraseña
         </ion-label>
-        <ion-input type="password" formControlName="password"></ion-input>
+        <ion-input [(ngModel)]="password" name="password" type="password"></ion-input>
       </ion-item>
-      <ion-item>
-      <div class="validation-errors">
-        <ng-container *ngFor="let validation of validation_messages.password">
-          <div class="error-message" *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
-            {{ validation.message }}
-          </div>
-        </ng-container>
-      </div>
-    </ion-item>
     </form>
 
-    <p text-right ion-text color="danger" tappable (click)="forgotPass()"><strong>¿Olvidó su contraseña?</strong></p>
+    <p text-right ion-text color="danger" tappable ><strong>¿Olvidó su contraseña?</strong></p>
 
     <div>
       <button ion-button icon-start block color="primary" tappable (click)="login()">

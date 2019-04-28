@@ -10,11 +10,13 @@ page-home {
    text-align : justify;
  }
 
- ion-title{
-   float: left;
- }
 
-
+.cerrarSesion{
+  float: right;
+  font-size: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-top: 8%;
+}
 
  ion-grid {
      height: 200%;

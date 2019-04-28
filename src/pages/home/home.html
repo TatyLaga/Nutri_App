@@ -3,9 +3,8 @@
 
   <ion-navbar color="light">
       <ion-title>
-
-          <img src="../../assets//imgs/LogoNutrivigilancia.png" height="45" (click)="home();">
-
+        <img src="../../assets//imgs/LogoNutrivigilancia.png" height="45" (click)="home();">
+        <a class="cerrarSesion" (click)="logOut();">Cerrar Sesión</a>
     </ion-title>
 
   </ion-navbar>
@@ -35,9 +34,9 @@
   <h2 class="center2"><strong>App de Nutrivigilancia</strong> </h2>
 
   <h1 >
-    welcome
-    <div *ngFor="let name of " >
-      {{name.name}}
+
+    <div id="showN">
+
     </div>
   </h1>
 

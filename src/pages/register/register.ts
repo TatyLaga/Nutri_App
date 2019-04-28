@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, AlertController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { ProvregisterProvider } from '../../providers/provregister/provregister';
 import { UserProvider } from '../../providers/user/user';
-import { ValueTransformer } from '@angular/compiler/src/util';
+import { HomePage } from '../home/home';
 
 
 
@@ -30,7 +30,6 @@ user: any = {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-     private toastCtrl: ToastController,
     private _register: ProvregisterProvider,
     private _users: UserProvider,
     private alertCtrl: AlertController,) {
@@ -59,7 +58,7 @@ user: any = {
     this._register.registerEmailAndPassword(this.user.email, this.user.password);
     console.log("Usuario guardado");
     this.presentAlert('Usuario Registrado');
-
+    this.navCtrl.push(HomePage);
   }
 
 }

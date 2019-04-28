@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup} from '@angular/forms';
 import { HomePage } from '../home/home';
 import { RegisterPage } from '../register/register';
+import { AuthProvider } from '../../providers/auth/auth';
 
 /**
  * Generated class for the LoginPage page.
@@ -19,44 +20,34 @@ import { RegisterPage } from '../register/register';
 export class LoginPage {
   validations_form: FormGroup;
   errorMessage: string = '';
+  email:string = "";
+  password:string = "";
+  loginError: string;
 
-  validation_messages = {
-   'email': [
-     { type: 'required', message: 'Correo es requerido' },
-     { type: 'pattern', message: 'Por favor ingrese un correo válido' }
-   ],
-   'password': [
-     { type: 'required', message: 'Contraseña requerida' },
-     { type: 'minlength', message: 'La contraseña debe tener más de 5 caracteres' }
-   ]
- };
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder,) {
+   constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthProvider) {
   }
 
   ionViewDidLoad() {
     console.log('LoginPage');
   }
 
-  login(){
-    this.navCtrl.setRoot(HomePage);
-  }
 
   register(){
     this.navCtrl.setRoot(RegisterPage);
   }
 
-  ngOnInit() {
-    this.validations_form = this.formBuilder.group({
-      email: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
-      password: new FormControl('', Validators.compose([
-        Validators.minLength(5),
-        Validators.required
-      ])),
-    });
+  login() {
+
+		let credentials = {
+			email: this.email,
+      password: this.password,
+      };
+
+		this.auth.signInWithEmail(credentials)
+			.then(
+				() => this.navCtrl.setRoot(HomePage),
+				error => this.loginError = error.message
+			);
   }
 
 }
