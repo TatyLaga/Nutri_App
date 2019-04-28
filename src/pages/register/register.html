@@ -1,0 +1,62 @@
+<ion-content padding class="bgContent">
+  <div class="login-content">
+
+    <!-- Logo -->
+    <div padding-horizontal text-center class="animated fadeInDown">
+      <div class="logo"><img src="../../assets//imgs/IconoNT.png" height="60"></div>
+      <h2 ion-text class="text-primary">
+        <strong>Nutrivigilancia</strong>
+        Registro
+      </h2>
+    </div>
+
+    <!-- Login form -->
+    <form class="list-form">
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="person" item-start class="text-primary"></ion-icon>
+          Nombre
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="user.name" name="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+            <ion-icon name="build" item-start class="text-primary"></ion-icon>
+            Rol</ion-label>
+        <ion-select  [(ngModel)]="user.rol" name="rol">
+
+      <ion-option value="medico">Médico</ion-option>
+      <ion-option value="farmaceutico">Farmacéutico</ion-option>
+      <ion-option value="nutricionista">Nutricionista</ion-option>
+      <ion-option value="laboratorio">Laboratorio o fabricante</ion-option>
+      <ion-option value="paciente">Paciente o cuidador</ion-option>
+    </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="at" item-start class="text-primary"></ion-icon>
+          Correo
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="user.email" name="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          Contraseña
+        </ion-label>
+        <ion-input type="password" [(ngModel)]="user.password" name="pasword"></ion-input>
+      </ion-item>
+    </form>
+
+    <div>
+      <button ion-button icon-start block color="secundary" tappable (click)="register()">
+        <ion-icon class="login" name="log-in"></ion-icon>
+        Registrarse
+      </button>
+    </div>
+
+  </div>
+  </ion-content>

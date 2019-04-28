@@ -6,25 +6,74 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { LoginPage } from "../pages/login/login";
+import { RegisterPage } from "../pages/register/register";
+import { FdaPage } from "../pages/fda/fda";
+import { HistoricalPage } from "../pages/historical/historical";
+import { NaranjoPage } from "../pages/naranjo/naranjo";
+import { ReportPage } from "../pages/report/report";
+import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
+import { ProveedorcountryProvider } from '../providers/proveedorcountry/proveedorcountry';
+import { SelectSearchableComponent } from 'ionic-select-searchable';
+import { ProvreportProvider } from '../providers/provreport/provreport';
+import { ProvregisterProvider } from '../providers/provregister/provregister';
+import { AuthProvider } from '../providers/auth/auth';
+import { UserProvider } from '../providers/user/user';
+import { NaranfdaPage } from "../pages/naranfda/naranfda";
+
+//Firebase
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../config';
+import { AngularFireAuth } from 'angularfire2/auth';
+
+
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage,
+    RegisterPage,
+    FdaPage,
+    HistoricalPage,
+    NaranjoPage,
+    ReportPage,
+    NaranfdaPage,
+    SelectSearchableComponent
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase), // firebase connection module
+    AngularFireDatabaseModule
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage,
+    RegisterPage,
+    FdaPage,
+    HistoricalPage,
+    NaranjoPage,
+    ReportPage,
+    NaranfdaPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ProveedorcountryProvider,
+    ProvreportProvider,
+    ProvregisterProvider,
+    AuthProvider,
+    AngularFireAuth,
+    UserProvider
   ]
 })
 export class AppModule {}

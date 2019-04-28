@@ -1,0 +1,268 @@
+<!--
+  Generated template for the NaranjoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="light">
+      <ion-title>
+
+          <img src="../../assets//imgs/LogoNutrivigilancia.png" height="45" (click)="home();">
+
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+ <h1>Algoritmo Naranjo adaptado para Productos Fitoterapéuticos</h1>
+
+ <div>
+    <ion-list radio-group [(ngModel)] = " naranjo.p1 ">
+          <p>1. ¿Existen evidencias previas o concluyentes sobre la reacción?</p>
+
+                 <ion-row>
+                        <ion-col>
+                          <ion-item>
+                              <ion-label>Si</ion-label>
+                              <ion-radio  value="1" ></ion-radio>
+                          </ion-item>
+                        </ion-col>
+
+                        <ion-col>
+                            <ion-item>
+                                <ion-label>No</ion-label>
+                                <ion-radio  value="0" ></ion-radio>
+                            </ion-item>
+                        </ion-col>
+
+                </ion-row>
+    </ion-list>
+ </div>
+
+ <div>
+    <ion-list radio-group [(ngModel)] = " naranjo.p2">
+        <p>2. ¿La reacción apareció después de usar el producto fitoterapéutico sospechoso?</p>
+
+               <ion-row>
+                      <ion-col>
+                        <ion-item>
+                            <ion-label>Si</ion-label>
+                            <ion-radio   value="2"></ion-radio>
+                        </ion-item>
+                      </ion-col>
+
+                      <ion-col>
+                          <ion-item>
+                              <ion-label>No</ion-label>
+                              <ion-radio  value="-1"></ion-radio>
+                          </ion-item>
+                      </ion-col>
+
+              </ion-row>
+  </ion-list>
+</div>
+
+<div>
+  <ion-list radio-group  [(ngModel)] = " naranjo.p3">
+      <p>3. ¿La reacción mejoró al suspender el producto fitoterapéutico o al administrar un antagonista especifico?</p>
+
+             <ion-row>
+                    <ion-col>
+                      <ion-item>
+                          <ion-label>Si</ion-label>
+                          <ion-radio value="1"></ion-radio>
+                      </ion-item>
+                    </ion-col>
+
+                    <ion-col>
+                        <ion-item>
+                            <ion-label>No</ion-label>
+                            <ion-radio  value="0"></ion-radio>
+                        </ion-item>
+                    </ion-col>
+
+                    </ion-row>
+</ion-list>
+</div>
+
+<div>
+<ion-list radio-group [(ngModel)] = " naranjo.p4">
+    <p>4. ¿La reacción reapareció al re utilizar el producto fitoterapéutico?</p>
+
+           <ion-row>
+                  <ion-col>
+                    <ion-item>
+                        <ion-label>Si</ion-label>
+                        <ion-radio  value="2"></ion-radio>
+                    </ion-item>
+                  </ion-col>
+
+                  <ion-col>
+                      <ion-item>
+                          <ion-label>No</ion-label>
+                          <ion-radio  value="-1"></ion-radio>
+                      </ion-item>
+                  </ion-col>
+
+          </ion-row>
+</ion-list>
+</div>
+
+<div>
+<ion-list radio-group [(ngModel)] = " naranjo.p5">
+    <p>5. ¿Existen causas alternativas, diferentes del producto fitoterapéutico, que puedan explicar la reacción?</p>
+
+           <ion-row>
+                  <ion-col>
+                    <ion-item>
+                        <ion-label>Si</ion-label>
+                        <ion-radio  value="-1"></ion-radio>
+                    </ion-item>
+                  </ion-col>
+
+                  <ion-col>
+                      <ion-item>
+                          <ion-label>No</ion-label>
+                          <ion-radio  value="2"></ion-radio>
+                      </ion-item>
+                  </ion-col>
+
+
+          </ion-row>
+</ion-list>
+</div>
+
+<div>
+<ion-list radio-group [(ngModel)] = " naranjo.p6">
+    <p>6. ¿Se presentó la reacción después de administrar un placebo?</p>
+
+           <ion-row>
+                  <ion-col>
+                    <ion-item>
+                        <ion-label>Si</ion-label>
+                        <ion-radio value="-1"></ion-radio>
+                    </ion-item>
+                  </ion-col>
+
+                  <ion-col>
+                      <ion-item>
+                          <ion-label>No</ion-label>
+                          <ion-radio value="1"></ion-radio>
+                      </ion-item>
+                  </ion-col>
+
+          </ion-row>
+</ion-list>
+</div>
+<div>
+<ion-list radio-group [(ngModel)] = " naranjo.p7">
+    <p>7. ¿Se determinó la presencia del producto fitoterapéutico en sangre u otros líquidos biológicos en concentraciones toxicas?</p>
+
+           <ion-row>
+                  <ion-col>
+                    <ion-item>
+                        <ion-label>Si</ion-label>
+                        <ion-radio  value="1"></ion-radio>
+                    </ion-item>
+                  </ion-col>
+
+                  <ion-col>
+                      <ion-item>
+                          <ion-label>No</ion-label>
+                          <ion-radio  value="0"></ion-radio>
+                      </ion-item>
+                  </ion-col>
+
+
+          </ion-row>
+</ion-list>
+</div>
+
+<div>
+<ion-list radio-group [(ngModel)] = " naranjo.p8">
+    <p>8. ¿La reacción fue más intensa al aumentar la aplicación o uso o menos intensa al disminuir la cantidad?</p>
+
+           <ion-row>
+                  <ion-col>
+                    <ion-item>
+                        <ion-label>Si</ion-label>
+                        <ion-radio  value="1"></ion-radio>
+                    </ion-item>
+                  </ion-col>
+
+                  <ion-col>
+                      <ion-item>
+                          <ion-label>No</ion-label>
+                          <ion-radio  value="0"></ion-radio>
+                      </ion-item>
+                  </ion-col>
+
+          </ion-row>
+</ion-list>
+</div>
+
+<div>
+<ion-list radio-group [(ngModel)] = " naranjo.p9">
+    <p>9. ¿El paciente ha tenido reacciones similares al producto fitoterapéutico sospechoso o a productos fitoterapéuticos similares?</p>
+
+           <ion-row>
+                  <ion-col>
+                    <ion-item>
+                        <ion-label>Si</ion-label>
+                        <ion-radio  value="1"></ion-radio>
+                    </ion-item>
+                  </ion-col>
+
+                  <ion-col>
+                      <ion-item>
+                          <ion-label>No</ion-label>
+                          <ion-radio  value="0"></ion-radio>
+                      </ion-item>
+                  </ion-col>
+
+
+          </ion-row>
+</ion-list>
+</div>
+
+<div>
+<ion-list radio-group [(ngModel)] = " naranjo.p10">
+    <p>10. ¿Se confirmó la reacción mediante alguna evidencia objetiva?</p>
+
+           <ion-row>
+                  <ion-col>
+                    <ion-item>
+                        <ion-label>Si</ion-label>
+                        <ion-radio  value="1"></ion-radio>
+                    </ion-item>
+                  </ion-col>
+
+
+                  <ion-col>
+                      <ion-item>
+                          <ion-label>No</ion-label>
+                          <ion-radio  value="0"></ion-radio>
+                      </ion-item>
+                  </ion-col>
+
+          </ion-row>
+</ion-list>
+</div>
+
+<button ion-button icon-start ion-button block class="center" (click)="analizarAlgoritmo();" >
+    <ion-icon name="md-sync"></ion-icon>
+    Analizar
+</button>
+
+<div >
+    <p >De acuerdo con el Algoritmo de Naranjo adaptado para para nutriciones artificiales, fórmulas infantiles y suplementos dietarios la clasificación de la reacción adversa es:</p>
+  <h1>Resultado</h1>
+    <button ion-button icon-start ion-button block id="showScore" class="hidden"></button>
+</div>
+
+
+
+</ion-content>

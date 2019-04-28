@@ -1,0 +1,68 @@
+<ion-content padding class="bgContent">
+  <div class="login-content">
+
+    <!-- Logo -->
+    <div padding-horizontal text-center class="animated fadeInDown">
+      <div class="logo"><img src="../../assets//imgs/IconoNT.png" height="120"></div>
+      <h2 ion-text class="text-primary">
+        <strong>Nutrivigilancia</strong>
+      </h2>
+    </div>
+
+    <!-- Login form -->
+    <form class="form" [formGroup]="validations_form" (ngSubmit)="tryLogin(validations_form.value)">
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="mail" item-start class="text-primary"></ion-icon>
+          Correo
+        </ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item >
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.email">
+          <div class="error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+    </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          Contraseña
+        </ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.password">
+          <div class="error-message" *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+    </ion-item>
+    </form>
+
+    <p text-right ion-text color="danger" tappable (click)="forgotPass()"><strong>¿Olvidó su contraseña?</strong></p>
+
+    <div>
+      <button ion-button icon-start block color="primary" tappable (click)="login()">
+        <ion-icon class="login" name="log-in"></ion-icon>
+        Ingresar
+      </button>
+
+
+    </div>
+
+
+    <!-- Other links -->
+    <div text-center margin-top>
+      <span ion-text color="light" tappable (click)="register()">¿Eres Nuevo? <strong>Regístrate</strong></span>
+    </div>
+
+  </div>
+
+

@@ -1,0 +1,341 @@
+<!--
+  Generated template for the ReportPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="light">
+      <ion-title>
+          <img src="../../assets//imgs/LogoNutrivigilancia.png" height="45" (click)="home();">
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+      <p>Fecha del reporte</p>
+      <p>{{today | date}}</p>
+  </ion-item>
+
+
+
+  <button ion-button>
+    <p>Datos del Generador del Reporte</p>
+  </button>
+
+  <ion-item>
+    <ion-label floating>Nombre</ion-label>
+    <ion-input [(ngModel)]="report.nombreR" name="namR"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Celular</ion-label>
+    <ion-input [(ngModel)]="report.celularR" name="celularR"></ion-input>
+  </ion-item>
+
+  <ion-item>
+        <ion-label floating>Institución</ion-label>
+        <ion-input [(ngModel)]="report.institucionR" name="institucionR"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Tipo Documento de Identidad</ion-label>
+    <ion-select [(ngModel)]="report.tipoDocumentoR" name="tipoDocumentoR">
+        <ion-option value="cedula">Cédula</ion-option>
+        <ion-option value="ti">TI</ion-option>
+        <ion-option value="pasaporte">Pasaporte</ion-option>
+        <ion-option value="rc">RC</ion-option>
+        <ion-option value="otro">Otro</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+      <ion-label floating>Número Documento</ion-label>
+      <ion-input [(ngModel)]="report.numeroDocumentoR" name="numeroDocumentoR"></ion-input>
+  </ion-item>
+
+  <ion-item >
+      <ion-label floating>Seleccione la Ciudad</ion-label>
+      <ion-select [(ngModel)]="report.ciudadR" name="ciudadR">
+        <div>
+          <ion-option  *ngFor="let depto of deptos" [value]="depto">
+            {{depto.municipio}}-{{depto.departamento}}
+          </ion-option>
+        </div>
+      </ion-select>
+  </ion-item>
+
+
+  <ion-item></ion-item>
+  <button ion-button>
+      <p>Datos del Paciente o usuario</p>
+  </button>
+
+  <ion-item>
+    <ion-label floating>Nombre y Apellido (solo las iniciales)</ion-label>
+    <ion-input [(ngModel)]="report.nombreP" name="nombreP"></ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label floating>Edad</ion-label>
+    <ion-input [(ngModel)]="report.edadP" name="edadP"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Correo</ion-label>
+    <ion-input [(ngModel)]="report.emailP" name="emailP"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Celular</ion-label>
+    <ion-input [(ngModel)]="report.celularP"  name="celularP"></ion-input>
+  </ion-item>
+
+  <ion-list radio-group [(ngModel)]="report.generoP" name="generoP">
+    <ion-list-header>Género</ion-list-header>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>M</ion-label>
+          <ion-radio value="masculino"></ion-radio>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label>F</ion-label>
+          <ion-radio value="femenino"></ion-radio>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label>Otro</ion-label>
+          <ion-radio value="otro"></ion-radio>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+
+  <ion-item>
+    <ion-label floating>Peso (Kg)</ion-label>
+    <ion-input id="pesoP" name="pesoP" [(ngModel)]="report.pesoP" type="number"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Estatura (Cm)</ion-label>
+    <ion-input id="estaturaP" name="estaturaP" [(ngModel)]="report.estaturaP" type="number"></ion-input>
+  </ion-item>
+
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <button ion-button (click)="imc();">Calcular IMC</button>
+        <p  id="showResult"></p>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-list radio-group [(ngModel)]="report.antecedentesP" name="antecedentesP">
+      <ion-col>
+       Antecedentes de reacciones alérgicas (confirmados)
+   </ion-col>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>si</ion-label>
+            <ion-radio value="si"></ion-radio>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label>No</ion-label>
+            <ion-radio value="no"></ion-radio>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+  </ion-list>
+  <ion-item>
+    <ion-label>¿Cuál?</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-list radio-group [(ngModel)]="report.problemasSaludP" name="problemasSaludP">
+    <ion-col>
+      Problemas de salud (diferentes al evento adverso actual)
+    </ion-col>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>si</ion-label>
+          <ion-radio value="si"></ion-radio>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label>No</ion-label>
+          <ion-radio value="no"></ion-radio>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+  <ion-item>
+      <ion-label>¿Cuál?</ion-label>
+      <ion-input></ion-input>
+  </ion-item>
+
+  <ion-list radio-group [(ngModel)]="report.embarazoP" name="embarazoP">
+    <ion-list-header>
+      Estado de embarazo
+    </ion-list-header>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>si</ion-label>
+          <ion-radio value="si"></ion-radio>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label>No</ion-label>
+          <ion-radio value="no"></ion-radio>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+
+  <ion-list radio-group [(ngModel)]="report.trimestreP" name="trimestreP">
+    <ion-list-header>
+      Trimestre
+    </ion-list-header>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Primero</ion-label>
+          <ion-radio value="primero"></ion-radio>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          <ion-label>Segundo</ion-label>
+          <ion-radio value="segundo"></ion-radio>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          <ion-label>Tercero</ion-label>
+          <ion-radio value="tercero"></ion-radio>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+
+  <ion-item></ion-item>
+  <button ion-button id="b3">
+     <p>Información del Producto Relacionado con la Reacción Adversa</p>
+    </button>
+
+  <ion-item>
+    <ion-label floating>Seleccione el tipo de producto</ion-label>
+    <ion-select  [(ngModel)]="report.tipoProductoP" name="tipoProductoP">
+    <ion-option value="nutricionEnteral">Nutrición Enteral</ion-option>
+    <ion-option value="nutricionParenteral">Nutrición Parenteral</ion-option>
+    <ion-option value="suplementoDietario">Suplemento Dietario</ion-option>
+    <ion-option value="formulaInfantil">Fórmula Infantil</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Nombre y/o Marca</ion-label>
+    <ion-input [(ngModel)]="report.marcaP" name="marcaP"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Fabricante (Nombre del Laboratorio)</ion-label>
+    <ion-input [(ngModel)]="report.laboratorioP" name="laboratorioP"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Número de Registro Sanitario</ion-label>
+    <ion-input [(ngModel)]="report.registroSanitarioP" name="registroSanitarioP"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Número de Lote</ion-label>
+    <ion-input [(ngModel)]="report.loteP" name="loteP"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Fecha de Vencimiento del Producto</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY" min="2000" max="2050-12-31" [(ngModel)]="report.fechaVencimientoP" name="fechaVencimientoP"></ion-datetime>
+  </ion-item>
+
+  <p>Dosis y frecuencia</p>
+  <ion-item>
+      <ion-label floating>Unidad de Dosis</ion-label>
+      <ion-input [(ngModel)]="report.dosisP" name="dosisP"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label floating>Unidad de frecuencia</ion-label>
+      <ion-input [(ngModel)]="report.frecuenciaP" name="frecuenciaP"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Fecha de incio de consumo</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="report.inicioConsumoP" name="inicioConsumoP"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Fecha de finalización de consumo</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="report.finalizaConsumoP" name="finalizaConsumoP"></ion-datetime>
+  </ion-item>
+
+  <ion-list radio-group [(ngModel)]="report.problemCalidadP" name="problemCalidadP">
+    <ion-label>¿Detectó algún problema de calidad del producto?</ion-label>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>Si</ion-label>
+            <ion-radio value="si"></ion-radio>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label>No</ion-label>
+            <ion-radio value="no"></ion-radio>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+  </ion-list>
+
+  <ion-item>
+    <ion-label floating>Describa el problema de calidad, si es el caso</ion-label>
+    <ion-textarea [(ngModel)]="report.descripcionProblCalidadP" name="descripcionProblCalidadP"></ion-textarea>
+  </ion-item>
+
+
+    <h4>Tomar o subir fotografía del producto sospechoso </h4>
+
+  <ion-row>
+    <ion-col col-6>
+      <ion-item>
+        <button ion-button icon-only large round>
+          <ion-icon name="camera"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-col>
+    <ion-col col-6>
+      <ion-item>
+      <button ion-button icon-only large round>
+          <ion-icon name="md-cloud-upload"></ion-icon>
+      </button>
+    </ion-item>
+    </ion-col>
+  </ion-row>
+  <p aling="center"></p>
+
+  <button ion-button icon-start ion-button block class="center3" (click)="enviarReporte()">
+      Enviar Reporte
+  </button>
+</ion-content>

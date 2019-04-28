@@ -1,0 +1,108 @@
+<!--
+  Generated template for the FdaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="light">
+      <ion-title>
+
+          <img src="../../assets//imgs/LogoNutrivigilancia.png" height="45" (click)="home();">
+
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <h1>Algoritmo de la FDA</h1> <h4>adaptado para nutriciones artificiales, fórmulas infantiles y suplementos dietarios</h4>
+
+
+
+    <div>
+      <ion-list radio-group [(ngModel)] = " fda.p1">
+        <p>1.¿La reacción tiene una asociación temporal razonable?</p>
+
+               <ion-row>
+                      <ion-col>
+                        <ion-item>
+                            <ion-label>Si</ion-label>
+                            <ion-radio  value="1"></ion-radio>
+                        </ion-item>
+                      </ion-col>
+
+                      <ion-col>
+                          <ion-item>
+                              <ion-label>No</ion-label>
+                              <ion-radio  value="0"></ion-radio>
+                          </ion-item>
+                      </ion-col>
+
+
+              </ion-row>
+    </ion-list>
+    </div>
+
+    <div>
+    <ion-list radio-group [(ngModel)] = "fda.p2">
+        <p>2.¿Desaparece la reacción al suspender el productos?</p>
+
+               <ion-row>
+                      <ion-col>
+                        <ion-item>
+                            <ion-label>Si</ion-label>
+                            <ion-radio value="1"></ion-radio>
+                        </ion-item>
+                      </ion-col>
+
+                      <ion-col>
+                          <ion-item>
+                              <ion-label>No</ion-label>
+                              <ion-radio value="0"></ion-radio>
+                          </ion-item>
+                      </ion-col>
+
+                     </ion-row>
+    </ion-list>
+    </div>
+
+    <div>
+    <ion-list radio-group [(ngModel)] = " fda.p3">
+        <p>3.¿La reacción reaparece al administrar el producto?</p>
+
+               <ion-row>
+                      <ion-col>
+                        <ion-item>
+                            <ion-label>Si</ion-label>
+                            <ion-radio  value="1"></ion-radio>
+                        </ion-item>
+                      </ion-col>
+
+                      <ion-col>
+                          <ion-item>
+                              <ion-label>No</ion-label>
+                              <ion-radio  value="0"></ion-radio>
+                          </ion-item>
+                      </ion-col>
+
+              </ion-row>
+    </ion-list>
+    </div>
+
+
+
+
+        <button ion-button icon-start ion-button block class="center" (click)="algoFDA();" >
+            <ion-icon name="md-sync"></ion-icon>
+                Analizar Algoritmo FDA
+        </button>
+
+        <div >
+          <p >De acuerdo con el Algoritmo de la FDA adaptado para nutriciones artificiales, fórmulas
+              infantiles y suplementos dietarios la clasificación de la reacción es:</p>
+        <h1 id="showScore"></h1>
+
+      </div>
+</ion-content>
