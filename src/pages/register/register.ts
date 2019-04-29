@@ -27,7 +27,7 @@ user: any = {
               email: '',
             };
 
-
+nameU='';
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private _register: ProvregisterProvider,
@@ -58,7 +58,7 @@ user: any = {
     this._register.registerEmailAndPassword(this.user.email, this.user.password);
     console.log("Usuario guardado");
     this.presentAlert('Usuario Registrado');
-    this.navCtrl.push(HomePage);
+    this.navCtrl.push(LoginPage, {nameU:this.user.name});
   }
 
 }

@@ -13,9 +13,10 @@ page-home {
 
 .cerrarSesion{
   float: right;
-  font-size: 10px;
+  font-size: 15px;
+
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  margin-top: 8%;
+
 }
 
  ion-grid {
@@ -26,22 +27,27 @@ page-home {
  ion-col{
    height: 200%;
  }
- .myButton{
+ .myButton2{
    background: linear-gradient(#1255c9, #5686df);
    color: #ffffff;
    width: 100%;
    height: 6%;
-   outline-color: rgba(49, 138, 172, 0.4);
-   transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+
+   margin-top: 8%
  }
 
- .myButton:hover {
-  box-shadow: inset 0 0 20px rgba(49, 138, 172, 0.5), 0 0 20px rgba(49, 138, 172, 0.4);
-  outline-color: rgba(49, 138, 172, 0);
-  outline-offset: 80px;
-  text-shadow: 1px 1px 6px #fff;
+
+.myButton{
+  background: linear-gradient(#1255c9, #5686df);
+  color: #ffffff;
+  width: 100%;
+  height: 6%;
+
+  margin-top: 2%
 
 }
+
+
 
 #b3{
   white-space: normal;

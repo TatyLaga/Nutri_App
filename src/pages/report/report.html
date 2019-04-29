@@ -12,18 +12,19 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+
+<ion-content>
+
   <ion-item>
       <p>Fecha del reporte</p>
       <p>{{today | date}}</p>
   </ion-item>
 
-
-
+<div>
   <button ion-button>
     <p>Datos del Generador del Reporte</p>
   </button>
-
+</div>
   <ion-item>
     <ion-label floating>Nombre</ion-label>
     <ion-input [(ngModel)]="report.nombreR" name="namR"></ion-input>
@@ -55,16 +56,14 @@
       <ion-input [(ngModel)]="report.numeroDocumentoR" name="numeroDocumentoR"></ion-input>
   </ion-item>
 
-  <ion-item >
-      <ion-label floating>Seleccione la Ciudad</ion-label>
-      <ion-select [(ngModel)]="report.ciudadR" name="ciudadR">
-        <div>
-          <ion-option  *ngFor="let depto of deptos" [value]="depto">
-            {{depto.municipio}}-{{depto.departamento}}
-          </ion-option>
-        </div>
-      </ion-select>
-  </ion-item>
+
+    <label for="color">Ciudad</label>
+    <input list="colors" name="color">
+    <datalist id="colors">
+      <option  *ngFor="let depto of deptos" >
+        {{depto.municipio}}-{{depto.departamento}}
+      </option>
+    </datalist>
 
 
   <ion-item></ion-item>
@@ -233,7 +232,7 @@
 
   <ion-item></ion-item>
   <button ion-button id="b3">
-     <p>Información del Producto Relacionado con la Reacción Adversa</p>
+     <p>Info Producto Relacionado con Reacción Adversa</p>
     </button>
 
   <ion-item>
@@ -335,7 +334,7 @@
   </ion-row>
   <p aling="center"></p>
 
-  <button ion-button icon-start ion-button block class="center3" (click)="enviarReporte()">
+  <button ion-button icon-start ion-button block class="center3" (click)="envi()">
       Enviar Reporte
   </button>
 </ion-content>

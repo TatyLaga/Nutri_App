@@ -23,12 +23,16 @@ export class LoginPage {
   email:string = "";
   password:string = "";
   loginError: string;
+  name= '';
 
    constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthProvider) {
+  //get name
+  this.name = navParams.get('nameU');
   }
 
   ionViewDidLoad() {
     console.log('LoginPage');
+
   }
 
 

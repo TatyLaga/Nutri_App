@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { ProvreportProvider } from '../../providers/provreport/provreport';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 /**
  * Generated class for the FdaPage page.
@@ -20,7 +22,9 @@ export class FdaPage {
     p2 : " ",
     p3: " ",
   }
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams, public reportProvider : ProvreportProvider,
+    private afd:AngularFireDatabase) {
   }
 
   ionViewDidLoad() {
@@ -41,54 +45,73 @@ export class FdaPage {
 
           //Resultado Dudosa
           while (this.fda.p1 == 0 && this.fda.p2 == 1 && this.fda.p3  == 0) {
-          var score =  document.getElementById("showScore").innerHTML ;
-          score = "Dudosa";
+          var score =  document.getElementById("showScore")
+          score.innerHTML = "Dudosa" ;
+          this.reportProvider.addFDA(score);
             break;
           }
 
           while (this.fda.p1 == 0 && this.fda.p2 == 0 && this.fda.p3  == 1) {
-            document.getElementById("showScore").innerHTML = "Dudosa";
+            var score =  document.getElementById("showScore")
+          score.innerHTML = "Dudosa" ;
+          this.reportProvider.addFDA(score);
             break;
           }
 
           while (this.fda.p1 == 0 && this.fda.p2 == 0 && this.fda.p3  == 0) {
-            document.getElementById("showScore").innerHTML = "Dudosa";
+            //document.getElementById("showScore").innerHTML = "Dudosa";
+            var score =  document.getElementById("showScore")
+          score.innerHTML = "Dudosa" ;
+          this.reportProvider.addFDA(score);
             break;
           }
 
           while (this.fda.p1 == 0 && this.fda.p2 == 1 && this.fda.p3  == 1) {
-           document.getElementById("showScore").innerHTML = "Dudosa";
+            var score =  document.getElementById("showScore")
+            score.innerHTML = "Dudosa" ;
+            this.reportProvider.addFDA(score);
             break;
           }
 
           //Resultado Posible
           while (this.fda.p1 == 1 && this.fda.p2 == 0 && this.fda.p3  == 0) {
-            document.getElementById("showScore").innerHTML = "Posible";
+            var score =  document.getElementById("showScore")
+            score.innerHTML = "Posible" ;
+            this.reportProvider.addFDA(score);
             break;
           }
 
           while (this.fda.p1 == 1 && this.fda.p2 == 0 && this.fda.p3  == 1) {
-           document.getElementById("showScore").innerHTML = "Posible";
+            var score =  document.getElementById("showScore")
+            score.innerHTML = "Posible" ;
+            this.reportProvider.addFDA(score);
             break;
           }
 
           //Resultado Probable
 
           while (this.fda.p1 == 1 && this.fda.p2 == 1 && this.fda.p3  == 0) {
-            document.getElementById("showScore").innerHTML = "Probable";
+            var score =  document.getElementById("showScore")
+            score.innerHTML = "Probable" ;
+            this.reportProvider.addFDA(score);
             break;
           }
 
           //Resultado Probada
           while (this.fda.p1 == 1 && this.fda.p2 == 1 && this.fda.p3  == 1) {
-            document.getElementById("showScore").innerHTML = "Probada";
+            var score =  document.getElementById("showScore")
+            score.innerHTML = "Probable" ;
+            this.reportProvider.addFDA(score);
             break;
           }
 
+          this.reportProvider.addFDA(score);
 
 
         }
       }
+      this.afd.list('Reportes_Paciente/Algoritmo_FDA').push(this.fda);
+
     }
 
 }

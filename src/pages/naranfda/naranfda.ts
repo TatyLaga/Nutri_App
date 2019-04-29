@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NaranjoPage } from '../naranjo/naranjo';
 import { FdaPage } from '../fda/fda';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the NaranfdaPage page.
@@ -32,4 +33,7 @@ export class NaranfdaPage {
     this.navCtrl.setRoot(FdaPage);
   }
 
+  home(){
+    this.navCtrl.setRoot(HomePage);
+  }
 }

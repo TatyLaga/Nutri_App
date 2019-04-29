@@ -15,7 +15,7 @@ import { ReportPage } from "../pages/report/report";
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { ProveedorcountryProvider } from '../providers/proveedorcountry/proveedorcountry';
-import { SelectSearchableComponent } from 'ionic-select-searchable';
+
 import { ProvreportProvider } from '../providers/provreport/provreport';
 import { ProvregisterProvider } from '../providers/provregister/provregister';
 import { AuthProvider } from '../providers/auth/auth';
@@ -27,6 +27,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../config';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { PipesModule } from '../pipes/pipes.module';
+
 
 
 
@@ -41,13 +43,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
     NaranjoPage,
     ReportPage,
     NaranfdaPage,
-    SelectSearchableComponent
+
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
     FormsModule,
+    PipesModule,
     AngularFireModule.initializeApp(environment.firebase), // firebase connection module
     AngularFireDatabaseModule
 

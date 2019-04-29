@@ -15,6 +15,7 @@ export class ProvreportProvider {
 
 reports: any ={};
 naranjos: any ={};
+fdas: any ={};
 userId : string;
   constructor(private _afDB: AngularFireDatabase,private afAuth: AngularFireAuth) {
     console.log('Hello ProvreportProvider Provider');
@@ -30,6 +31,12 @@ addNaranjo(naranjo: any) {
   if(!this.userId) return;
   this.naranjos = this._afDB.list(`/Reportes_Paciente/${this.userId}/Algoritmo_Naranjo`);
   return this.naranjos.push({ naranjo});
+}
+
+addFDA(fda: any) {
+  if(!this.userId) return;
+  this.fdas = this._afDB.list(`/Reportes_Paciente/${this.userId}/Algoritmo_FDA`);
+  return this.fdas.push({ fda});
 }
 
   getReportList() {

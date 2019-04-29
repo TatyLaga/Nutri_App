@@ -14,7 +14,7 @@
     "@angular/animations": "5.2.11",
     "@angular/common": "5.2.11",
     "@angular/compiler": "5.2.11",
-    "@angular/compiler-cli": "5.2.11",
+    "@angular/compiler-cli": "^7.2.14",
     "@angular/core": "5.2.11",
     "@angular/forms": "5.2.11",
     "@angular/http": "5.2.11",
@@ -26,18 +26,21 @@
     "@ionic/pro": "2.0.4",
     "@ionic/storage": "2.2.0",
     "angularfire2": "^5.1.2",
+    "bootstrap": "^3.4.1",
     "firebase": "^5.10.1",
     "ionic-angular": "3.9.5",
-    "ionic-select-searchable": "^2.10.0",
-    "ionic-selectable": "^4.4.0",
+    "ionic-selectable": "^3.1.0",
     "ionicons": "3.0.0",
+    "jquery": "^3.4.0",
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
+    "typeahead": "^0.2.2",
     "zone.js": "0.8.29"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "3.2.2",
+    "@ionic/app-scripts": "^3.2.3",
     "@ionic/lab": "1.0.24",
+    "@types/jquery": "^3.3.29",
     "typescript": "~2.6.2"
   },
   "description": "An Ionic project"

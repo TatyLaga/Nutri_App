@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { ProvreportProvider } from "../../providers/provreport/provreport";
-import { LoginPage } from '../login/login';
 import { NaranfdaPage } from '../naranfda/naranfda';
+import { HomePage } from '../home/home';
+
 
 
 /**
@@ -21,6 +22,8 @@ import { NaranfdaPage } from '../naranfda/naranfda';
   templateUrl: 'report.html',
 })
 export class ReportPage {
+
+
   report: any = {
     nombreR: '',
     celularR: '',
@@ -61,9 +64,8 @@ export class ReportPage {
   deptos: any;
   cie10: any;
   data: string;
-  pesoP: number;
-  estaturaP: number;
-  result: number;
+
+  textoBuscar = '';
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -82,7 +84,7 @@ this.getDeptos();
   }
 
   home(){
-
+    this.navCtrl.setRoot(HomePage);
   }
 
   presentAlert(message: string) {
@@ -100,11 +102,15 @@ this.getDeptos();
     this.navCtrl.push(NaranfdaPage);
   }
 
+  envi(){
+    this.navCtrl.push(NaranfdaPage);
+  }
+
   getDeptos(){
     this.http.get('https://www.datos.gov.co/resource/xdk5-pm3f.json').map(
       res => res.json()).subscribe(deptos => {
       this.deptos = deptos;
-      console.log(deptos);
+
       }, err => {
 
 console.log(err);
@@ -114,11 +120,37 @@ console.log(err);
   }
 
   imc(){
-    var result = this.pesoP/(Math.pow(this.estaturaP, 2));
+
+     console.log(this.report.pesoP);
+     console.log(this.report.pesoP);
+
+     var result = (this.report.pesoP/(Math.pow(this.report.estaturaP/100, 2))).toFixed(1);
     var scoreCont = document.getElementById('showResult');
-    scoreCont.innerHTML = `IMC = ${result}`;
+
+    console.log(result);
+
+if (result < 18.5.toString()) {
+  scoreCont.innerHTML = `IMC = ${result}: Inferior al Normal`;
+}
+
+if (result >= 18.5.toString() && result <= 24.9.toString()) {
+  scoreCont.innerHTML = `IMC = ${result}: Normal`;
+}
+
+if (result >= 25.0.toString() && result <= 29.9.toString()) {
+  scoreCont.innerHTML = `IMC = ${result}: Superior al Normal`;
+}
+
+if (result > 30.0.toString()) {
+  scoreCont.innerHTML = `IMC = ${result}: Obesidad`;
+}
+
   }
 
+buscar(event){
+ this.textoBuscar = event.value;
+
+}
 
 
 }
