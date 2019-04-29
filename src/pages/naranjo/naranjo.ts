@@ -84,7 +84,7 @@ export class NaranjoPage {
 
     scoreCont.classList.remove('hidden');
 
-    this.afd.list('Reportes_Paciente/Algoritmo_Naranjo').push(this.naranjo);
+    this.reportProvider.addNaranjo(this.naranjo);
 
     }
 }

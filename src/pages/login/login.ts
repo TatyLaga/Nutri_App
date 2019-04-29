@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup} from '@angular/forms';
 import { HomePage } from '../home/home';
 import { RegisterPage } from '../register/register';
 import { AuthProvider } from '../../providers/auth/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 /**
  * Generated class for the LoginPage page.
@@ -25,7 +26,7 @@ export class LoginPage {
   loginError: string;
   name= '';
 
-   constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthProvider) {
+   constructor(public navCtrl: NavController, private db: AngularFireDatabase, public navParams: NavParams, private auth: AuthProvider) {
   //get name
   this.name = navParams.get('nameU');
   }
@@ -51,7 +52,14 @@ export class LoginPage {
 			.then(
 				() => this.navCtrl.setRoot(HomePage),
 				error => this.loginError = error.message
-			);
+      );
+
+      this.db.object('/Reportes_Paciente').valueChanges().subscribe((datas) => {
+        console.log("datas", datas)
+      },(err)=>{
+         console.log("probleme : ", err)
+      });
+
   }
 
 }

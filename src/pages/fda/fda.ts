@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { ProvreportProvider } from '../../providers/provreport/provreport';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { NaranfdaPage } from '../naranfda/naranfda';
 
 /**
  * Generated class for the FdaPage page.
@@ -24,7 +25,7 @@ export class FdaPage {
   }
   constructor(public navCtrl: NavController,
     public navParams: NavParams, public reportProvider : ProvreportProvider,
-    private afd:AngularFireDatabase) {
+    private afd:AngularFireDatabase,  private alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -110,8 +111,9 @@ export class FdaPage {
 
         }
       }
-      this.afd.list('Reportes_Paciente/Algoritmo_FDA').push(this.fda);
+      this.reportProvider.addFDA(this.fda);
 
     }
+
 
 }

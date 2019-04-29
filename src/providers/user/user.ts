@@ -26,7 +26,9 @@ export class UserProvider {
     this.users.set({ user });
   }
 
+
   getUser(){
-    return this.users
+    return this._afDB.object(`/users`)
   }
+
 }

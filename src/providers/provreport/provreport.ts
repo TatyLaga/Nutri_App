@@ -17,30 +17,41 @@ reports: any ={};
 naranjos: any ={};
 fdas: any ={};
 userId : string;
+itemId:string;
   constructor(private _afDB: AngularFireDatabase,private afAuth: AngularFireAuth) {
-    console.log('Hello ProvreportProvider Provider');
-  }
+    this.afAuth.authState.subscribe(user =>{
+      if (user) this.userId = user.uid
+    })
+    }
 
-  addReport(report: any) {
+  addReport(report:any): void {
     if(!this.userId) return;
+    this.reports.userId = this.userId
+
     this.reports = this._afDB.list(`/Reportes_Paciente/${this.userId}`);
-    return this.reports.push({ report});
+    return this.reports.push({report});
 }
 
-addNaranjo(naranjo: any) {
+addNaranjo(naranjo: any): void {
   if(!this.userId) return;
+  this.naranjos.userId = this.userId
+
   this.naranjos = this._afDB.list(`/Reportes_Paciente/${this.userId}/Algoritmo_Naranjo`);
-  return this.naranjos.push({ naranjo});
+   this.naranjos.push({ naranjo});
 }
 
-addFDA(fda: any) {
-  if(!this.userId) return;
-  this.fdas = this._afDB.list(`/Reportes_Paciente/${this.userId}/Algoritmo_FDA`);
-  return this.fdas.push({ fda});
+addFDA(fda: any) : void{
+
+  this.fdas.userId = this.userId
+
+  this.fdas = this._afDB.list(`/Reportes_Paciente/Algoritmo_FDAs`);
+  return this.fdas.push({fda});
 }
 
   getReportList() {
-    return this.reports;
+    if(!this.userId) return;
+    this.reports = this._afDB.list(`/Reportes_Paciente`);
+    return this.reports
 }
 
 updateReport(report: any) {

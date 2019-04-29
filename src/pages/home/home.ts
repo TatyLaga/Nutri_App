@@ -9,6 +9,10 @@ import * as firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UserProvider } from '../../providers/user/user';
 import { Http } from '@angular/http';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs';
+import { RegisterPage } from "../register/register";
+
 
 
 
@@ -18,20 +22,25 @@ import { Http } from '@angular/http';
 })
 export class HomePage {
   @ViewChild(Slides) slides: Slides;
-  name= '';
+
   reportData : any;
   repDatas: any;
+  items: Array<any>;
+  name: Array<any>;
+  age: Array<any>;
+  users: Observable<RegisterPage[]>;
   constructor(public navCtrl: NavController,
     public dbUser: UserProvider ,public afAuth : AngularFireAuth,
     public navParams: NavParams,
-    public http: Http) {
+    public http: Http,
+    public af: AngularFireDatabase) {
     this.checkUser = this.checkUser.bind(this);
     //get name
     this.name=navParams.get('nameU');
   }
   ionViewWillEnter(){
     firebase.auth().onAuthStateChanged(this.checkUser);
-    this.getReport();
+
   }
 
   checkUser(user) {
@@ -87,21 +96,8 @@ export class HomePage {
 
 
   //get data
-  getReport(){
-    firebase.database().ref().child("user").on('value', function(snapshot) {
-      snapshot.forEach(function(child) {
-      var datas = child.val();
-      var name=child.val().name;
-      var rol=child.val().rol;
-      var email=child.val().email;
-      console.log(name);
-      console.log(rol);
-      console.log(email);
 
 
-        });
-      });
-  }
 
 
 }

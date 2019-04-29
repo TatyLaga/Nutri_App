@@ -97,7 +97,7 @@ this.getDeptos();
   }
 
   enviarReporte() {
-    this.afd.list('Reportes_Paciente/').push(this.report);
+    this.reportProvider.addReport(this.report);
     this.presentAlert('Reporte enviado. presione "Ok" para continuar');
     this.navCtrl.push(NaranfdaPage);
   }

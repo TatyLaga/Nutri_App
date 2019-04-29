@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@angular/animations": "5.2.11",
+    "@angular/cli": "^7.3.8",
     "@angular/common": "5.2.11",
     "@angular/compiler": "5.2.11",
     "@angular/compiler-cli": "^7.2.14",
