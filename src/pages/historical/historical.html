@@ -16,12 +16,16 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-<button ion-button (click)="consul()">consul</button>
+<ion-content padding class="bgContent">
+    <div class="login-content">
 
-
-<p id="showData"></p>
-
-
-
+        <!-- Logo -->
+        <div padding-horizontal text-center class="animated fadeInDown">
+          <div class="logo"><img src="../../assets//imgs/IconoNT.png" height="120"></div>
+          <h2 ion-text class="text-primary">
+            <strong>Nutrivigilancia</strong>
+          </h2>
+        </div>
+<button ion-button icon-start ion-button block (click)="consul()" class="center"><a href="https://console.firebase.google.com/u/2/project/nutrivigilancia2019/database/nutrivigilancia2019/data/Reports" target="_blank"> Ver los reportes</a></button>
+</div>
 </ion-content>

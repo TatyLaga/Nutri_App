@@ -24,391 +24,352 @@
 
 <ion-content padding>
 
-
-
-  <p>Datos del Generador del Reporte</p>
-
-  <ion-item>
-    <ion-label floating>
-      <ion-icon name="call" item-start class="text-primary"></ion-icon>
-      Celular
-    </ion-label>
-    <ion-input type="number"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label floating>
-      Institución
-    </ion-label>
-    <ion-input type="text-primary"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label floating>
-        <ion-icon name="build" item-start class="text-primary"></ion-icon>
-        Documento de Identidad</ion-label>
-    <ion-select name="document">
-
-  <ion-option value="cedul">Cédula</ion-option>
-  <ion-option value="ti">TI</ion-option>
-  <ion-option value="pasaporte">Pasaporte</ion-option>
-  <ion-option value="rc">RC</ion-option>
-  <ion-option value="otro">Otro</ion-option>
-</ion-select>
-  </ion-item>
-
-  <ion-item>
-    <ion-label floating>
-      Número de documento
-    </ion-label>
-    <ion-input type="text-primary"></ion-input>
-  </ion-item>
-
-  <p>depto</p>
-  <p>municipio</p>
-
   <ion-item>
     <p>Fecha del reporte</p>
-   <p>{{today | date}}</p>
+    <p>{{today | date}}</p>
 </ion-item>
 
-<h1>Datos del Paciente o usuario</h1>
+<div>
 
-<p>Nombre y Apellido (solo las iniciales)</p>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
+  <h1>Datos del Generador del Reporte</h1>
 
-      <p>Edad</p>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-
-      <p>Correo</p>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-
-      <p>Celular</p>
-      <ion-item>
-        <ion-input></ion-input>
-      </ion-item>
-
-
-
-<ion-list radio-group>
-
-    <ion-list-header>
-      Género
-    </ion-list-header>
-
-    <ion-row>
-            <ion-col>
-              <ion-item>
-                <ion-label>M</ion-label>
-                <ion-radio value="masculino"></ion-radio>
-              </ion-item>
-            </ion-col>
-
-            <ion-col>
-              <ion-item>
-                <ion-label>F</ion-label>
-                <ion-radio value="femenino"></ion-radio>
-              </ion-item>
-            </ion-col>
-
-            <ion-col>
-              <ion-item>
-                <ion-label>Otro</ion-label>
-                <ion-radio value="otro"></ion-radio>
-
-              </ion-item>
-            </ion-col>
-    </ion-row>
-</ion-list>
-
-<p>Peso (kg)</p>
+</div>
 <ion-item>
-  <ion-input></ion-input>
+  <ion-label floating>Nombre</ion-label>
+  <ion-input [(ngModel)]="report.nombreR" name="namR"></ion-input>
 </ion-item>
 
-<p>Estatura (cm)</p>
 <ion-item>
-  <ion-input></ion-input>
+  <ion-label floating>Celular</ion-label>
+  <ion-input [(ngModel)]="report.celularR" name="celularR"></ion-input>
 </ion-item>
 
-<p>IMC</p>
 <ion-item>
-  <p>mostrar con los datos</p>
+      <ion-label floating>Institución</ion-label>
+      <ion-input [(ngModel)]="report.institucionR" name="institucionR"></ion-input>
 </ion-item>
 
-    <ion-list radio-group>
-      <ion-list-header>
-        Antecedentes de reacciones alérgicas (confirmados)
-      </ion-list-header>
+<ion-item>
+  <ion-label floating>Tipo Documento de Identidad</ion-label>
+  <ion-select [(ngModel)]="report.tipoDocumentoR" name="tipoDocumentoR">
+      <ion-option value="cedula">Cédula</ion-option>
+      <ion-option value="ti">TI</ion-option>
+      <ion-option value="pasaporte">Pasaporte</ion-option>
+      <ion-option value="rc">RC</ion-option>
+      <ion-option value="otro">Otro</ion-option>
+  </ion-select>
+</ion-item>
 
-      <ion-row>
-              <ion-col>
-                <ion-item>
-                  <ion-label>si</ion-label>
-                  <ion-radio value="si"></ion-radio>
-                </ion-item>
-              </ion-col>
+<ion-item>
+    <ion-label floating>Número Documento</ion-label>
+    <ion-input [(ngModel)]="report.numeroDocumentoR" name="numeroDocumentoR"></ion-input>
+</ion-item>
 
-              <ion-col>
-                <ion-item>
-                  <ion-label>No</ion-label>
-                  <ion-radio value="no"></ion-radio>
-                </ion-item>
-              </ion-col>
 
-              <ion-col>
-                <ion-item>
-                  <ion-label>¿Cuál?</ion-label>
+  <label for="color">Ciudad</label>
+  <input list="colors" name="color">
+  <datalist id="colors">
+    <option  *ngFor="let depto of deptos" >
+      {{depto.municipio}}-{{depto.departamento}}
+    </option>
+  </datalist>
 
-                    <ion-input></ion-input>
 
-                </ion-item>
-              </ion-col>
-      </ion-row>
-  </ion-list>
+<ion-item></ion-item>
 
-  <ion-list radio-group>
-    <ion-list-header>
-      Problemas de salud (diferentes al evento adverso actual)
-    </ion-list-header>
+    <h1>Datos del Paciente o usuario</h1>
 
-    <ion-row>
-            <ion-col>
-              <ion-item>
-                <ion-label>si</ion-label>
-                <ion-radio value="si"></ion-radio>
-              </ion-item>
-            </ion-col>
 
-            <ion-col>
-              <ion-item>
-                <ion-label>No</ion-label>
-                <ion-radio value="no"></ion-radio>
-              </ion-item>
-            </ion-col>
+<ion-item>
+  <ion-label floating>Nombre y Apellido (solo las iniciales)</ion-label>
+  <ion-input [(ngModel)]="report.nombreP" name="nombreP"></ion-input>
+</ion-item>
 
-            <ion-col>
-              <ion-item>
-                <ion-label>¿Cuál?</ion-label>
+<ion-item>
+    <ion-label floating>Edad</ion-label>
+  <ion-input [(ngModel)]="report.edadP" name="edadP"></ion-input>
+</ion-item>
 
-                  <ion-input></ion-input>
+<ion-item>
+  <ion-label floating>Correo</ion-label>
+  <ion-input [(ngModel)]="report.emailP" name="emailP"></ion-input>
+</ion-item>
 
-              </ion-item>
-            </ion-col>
-    </ion-row>
-</ion-list>
+<ion-item>
+  <ion-label floating>Celular</ion-label>
+  <ion-input [(ngModel)]="report.celularP"  name="celularP"></ion-input>
+</ion-item>
 
-<ion-list radio-group>
-  <ion-list-header>
-    Estado de embarazo
-  </ion-list-header>
-
+<ion-list radio-group [(ngModel)]="report.generoP" name="generoP">
+  <ion-list-header>Género</ion-list-header>
   <ion-row>
-          <ion-col>
-            <ion-item>
-              <ion-label>si</ion-label>
-              <ion-radio value="si"></ion-radio>
-            </ion-item>
-          </ion-col>
-
-          <ion-col>
-            <ion-item>
-              <ion-label>No</ion-label>
-              <ion-radio value="no"></ion-radio>
-            </ion-item>
-          </ion-col>
+    <ion-col>
+      <ion-item>
+        <ion-label>M</ion-label>
+        <ion-radio value="masculino"></ion-radio>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+        <ion-label>F</ion-label>
+        <ion-radio value="femenino"></ion-radio>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+        <ion-label>Otro</ion-label>
+        <ion-radio value="otro"></ion-radio>
+      </ion-item>
+    </ion-col>
   </ion-row>
 </ion-list>
 
-<ion-list radio-group>
-  <ion-list-header>
-    Problemas de salud (diferentes al evento adverso actual)
-  </ion-list-header>
+<ion-item>
+  <ion-label floating>Peso (Kg)</ion-label>
+  <ion-input id="pesoP" name="pesoP" [(ngModel)]="report.pesoP" type="number"></ion-input>
+</ion-item>
 
-  <ion-row>
-          <ion-col>
-            <ion-item>
-              <ion-label>si</ion-label>
-              <ion-radio value="si"></ion-radio>
-            </ion-item>
-          </ion-col>
-
-          <ion-col>
-            <ion-item>
-              <ion-label>No</ion-label>
-              <ion-radio value="no"></ion-radio>
-            </ion-item>
-          </ion-col>
-
-          <ion-col>
-            <ion-item>
-              <ion-label>¿Cuál?</ion-label>
-
-                <ion-input></ion-input>
-
-            </ion-item>
-          </ion-col>
-  </ion-row>
-</ion-list>
-
-<ion-list radio-group>
-<ion-list-header>
-  Trimestre
-</ion-list-header>
+<ion-item>
+  <ion-label floating>Estatura (Cm)</ion-label>
+  <ion-input id="estaturaP" name="estaturaP" [(ngModel)]="report.estaturaP" type="number"></ion-input>
+</ion-item>
 
 <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label>Primero</ion-label>
-            <ion-radio value="primero"></ion-radio>
-          </ion-item>
-        </ion-col>
-
-        <ion-col>
-          <ion-item>
-            <ion-label>Segundo</ion-label>
-            <ion-radio value="segundo"></ion-radio>
-          </ion-item>
-        </ion-col>
-
-        <ion-col>
-          <ion-item>
-            <ion-label>Tercero</ion-label>
-            <ion-radio value="tercero"></ion-radio>
-          </ion-item>
-        </ion-col>
+  <ion-col>
+    <ion-item>
+      <button ion-button (click)="imc();">Calcular IMC</button>
+      <p  id="showResult"></p>
+    </ion-item>
+  </ion-col>
 </ion-row>
+
+<ion-list radio-group [(ngModel)]="report.antecedentesP" name="antecedentesP">
+    <ion-col>
+     Antecedentes de reacciones alérgicas (confirmados)
+ </ion-col>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>si</ion-label>
+          <ion-radio value="si"></ion-radio>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label>No</ion-label>
+          <ion-radio value="no"></ion-radio>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 </ion-list>
-
-<h1>Información del Producto Relacionado con la Reacción Adversa</h1>
 <ion-item>
-  <ion-label floating>
-      <ion-icon name="build" item-start class="text-primary"></ion-icon>
-      Seleccione el tipo de producto</ion-label>
-  <ion-select name="document">
-
-<ion-option value="nutricionEnteral">Nutrición Enteral</ion-option>
-<ion-option value="nutricionParenteral">Nutrición Parenteral</ion-option>
-<ion-option value="suplementoDietario">Suplemento Dietario</ion-option>
-<ion-option value="formulaInfantil">Fórmula Infantil</ion-option>
-</ion-select>
+  <ion-label>¿Cuál?</ion-label>
+  <ion-input></ion-input>
 </ion-item>
 
-<p>Nombre y/o Marca</p>
+<ion-list radio-group [(ngModel)]="report.problemasSaludP" name="problemasSaludP">
+  <ion-col>
+    Problemas de salud (diferentes al evento adverso actual)
+  </ion-col>
+  <ion-row>
+    <ion-col>
       <ion-item>
-        <ion-input></ion-input>
+        <ion-label>si</ion-label>
+        <ion-radio value="si"></ion-radio>
       </ion-item>
-
-      <p>Fabricante (Nombre del Laboratorio)</p>
+    </ion-col>
+    <ion-col>
       <ion-item>
-          <ion-input></ion-input>
+        <ion-label>No</ion-label>
+        <ion-radio value="no"></ion-radio>
       </ion-item>
-
-      <ion-item>
-        <ion-label>Número de Registro Sanitario</ion-label>
-        <ion-input></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label>Número de Lote</ion-label>
+    </ion-col>
+  </ion-row>
+</ion-list>
+<ion-item>
+    <ion-label>¿Cuál?</ion-label>
     <ion-input></ion-input>
 </ion-item>
 
+<ion-list radio-group [(ngModel)]="report.embarazoP" name="embarazoP">
+  <ion-list-header>
+    Estado de embarazo
+  </ion-list-header>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label>si</ion-label>
+        <ion-radio value="si"></ion-radio>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+        <ion-label>No</ion-label>
+        <ion-radio value="no"></ion-radio>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+</ion-list>
+
+<ion-list radio-group [(ngModel)]="report.trimestreP" name="trimestreP">
+  <ion-list-header>
+    Trimestre
+  </ion-list-header>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label>Primero</ion-label>
+        <ion-radio value="primero"></ion-radio>
+      </ion-item>
+    </ion-col>
+
+    <ion-col>
+      <ion-item>
+        <ion-label>Segundo</ion-label>
+        <ion-radio value="segundo"></ion-radio>
+      </ion-item>
+    </ion-col>
+
+    <ion-col>
+      <ion-item>
+        <ion-label>Tercero</ion-label>
+        <ion-radio value="tercero"></ion-radio>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+</ion-list>
+
+<ion-item></ion-item>
+
+   <h1>Información del Producto Relacionado con la Reacción Adversa</h1>
+
+
 <ion-item>
-      <ion-label>Fecha de Vencimiento del Producto</ion-label>
-      <ion-datetime displayFormat="DD/MM/YYYY" min="2000" max="2050-12-31"></ion-datetime>
+  <ion-label floating>Seleccione el tipo de producto</ion-label>
+  <ion-select  [(ngModel)]="report.tipoProductoP" name="tipoProductoP">
+  <ion-option value="nutricionEnteral">Nutrición Enteral</ion-option>
+  <ion-option value="nutricionParenteral">Nutrición Parenteral</ion-option>
+  <ion-option value="suplementoDietario">Suplemento Dietario</ion-option>
+  <ion-option value="formulaInfantil">Fórmula Infantil</ion-option>
+  </ion-select>
+</ion-item>
+
+<ion-item>
+  <ion-label floating>Nombre y/o Marca</ion-label>
+  <ion-input [(ngModel)]="report.marcaP" name="marcaP"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label floating>Fabricante (Nombre del Laboratorio)</ion-label>
+  <ion-input [(ngModel)]="report.laboratorioP" name="laboratorioP"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label floating>Número de Registro Sanitario</ion-label>
+  <ion-input [(ngModel)]="report.registroSanitarioP" name="registroSanitarioP"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label floating>Número de Lote</ion-label>
+  <ion-input [(ngModel)]="report.loteP" name="loteP"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label floating>Fecha de Vencimiento del Producto</ion-label>
+  <ion-datetime displayFormat="DD/MM/YYYY" min="2000" max="2050-12-31" [(ngModel)]="report.fechaVencimientoP" name="fechaVencimientoP"></ion-datetime>
 </ion-item>
 
 <p>Dosis y frecuencia</p>
-
 <ion-item>
-  <ion-label>Fecha de incio de consumo</ion-label>
-  <ion-datetime displayFormat="DD/MM/YYYY"></ion-datetime>
+    <ion-label floating>Unidad de Dosis</ion-label>
+    <ion-input [(ngModel)]="report.dosisP" name="dosisP"></ion-input>
+</ion-item>
+<ion-item>
+    <ion-label floating>Unidad de frecuencia</ion-label>
+    <ion-input [(ngModel)]="report.frecuenciaP" name="frecuenciaP"></ion-input>
 </ion-item>
 
 <ion-item>
-  <ion-label>Fecha de finalización de consumo</ion-label>
-  <ion-datetime displayFormat="DD/MM/YYYY"></ion-datetime>
+  <ion-label floating>Fecha de incio de consumo</ion-label>
+  <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="report.inicioConsumoP" name="inicioConsumoP"></ion-datetime>
 </ion-item>
 
-<ion-list radio-group>
+<ion-item>
+  <ion-label floating>Fecha de finalización de consumo</ion-label>
+  <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="report.finalizaConsumoP" name="finalizaConsumoP"></ion-datetime>
+</ion-item>
+
+<ion-list radio-group [(ngModel)]="report.problemCalidadP" name="problemCalidadP">
   <ion-label>¿Detectó algún problema de calidad del producto?</ion-label>
-            <ion-row>
-                <ion-col>
-                  <ion-item>
-                      <ion-label>Si</ion-label>
-                      <ion-radio value="yes"></ion-radio>
-                  </ion-item>
-                </ion-col>
-
-                <ion-col>
-                    <ion-item>
-                        <ion-label>No</ion-label>
-                        <ion-radio value="no"></ion-radio>
-                    </ion-item>
-                </ion-col>
-        </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Si</ion-label>
+          <ion-radio value="si"></ion-radio>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label>No</ion-label>
+          <ion-radio value="no"></ion-radio>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 </ion-list>
 
+<ion-item>
+  <ion-label floating>Describa el problema de calidad, si es el caso</ion-label>
+  <ion-textarea [(ngModel)]="report.descripcionProblCalidadP" name="descripcionProblCalidadP"></ion-textarea>
+</ion-item>
 
-<p>Describa el problema de calidad, si es el caso</p>
+
+  <h4>Tomar o subir fotografía del producto sospechoso </h4>
+
+<ion-row>
+  <ion-col col-6>
     <ion-item>
-        <ion-textarea></ion-textarea>
+      <button ion-button icon-only large round (click)="capture()">
+        <ion-icon name="camera"></ion-icon>
+      </button>
     </ion-item>
+  </ion-col>
 
-
-
-
-<button ion-button icon-only large round>
-    <ion-icon name="camera"></ion-icon>
-</button>
-<button ion-button >Subir Foto</button>
-
- <p aling="center"><img></p>
+</ion-row>
+<p aling="center"></p>
 
 
 <h1>Información del evento Adverso</h1>
 
 <p>Descripción del evento adverso</p>
       <ion-item>
-          <ion-textarea></ion-textarea>
+          <ion-textarea [(ngModel)]="report.describe" name="describe"></ion-textarea>
       </ion-item>
 
 
-  <ion-item>
-      <ion-label floating>
-            Seleccione el CIE 10
-      </ion-label>
-      <ion-select name="document" >
-            <div>
-              <ion-option  *ngFor="let cie of cie10" [value]="cie">
-                {{cie.c}}-{{cie.d}}
-              </ion-option>
-            </div>
-      </ion-select>
-  </ion-item>
+      <label for="cie10">seleccione el CIE10</label>
+      <input list="cie10s" name="cie10" [(ngModel)]="report.cie10" name="cie10">
+      <datalist id="cie10s">
+        <option  *ngFor="let ci of cie10" >
+          {{ci.c}}-{{ci.d}}
+        </option>
+      </datalist>
+
 
       <ion-item>
         <ion-label>Fecha de incio del evento adverso</ion-label>
-        <ion-datetime displayFormat="DD/MM/YYYY"></ion-datetime>
+        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="report.dateEventAdv" name="dateEventAdv"></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label>Fecha de desaparició del evento adverso</ion-label>
-        <ion-datetime displayFormat="DD/MM/YYYY"></ion-datetime>
+        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="report.dateEventAdvFin" name="dateEventAdvFin"></ion-datetime>
       </ion-item>
 
       <h2>Seriedad del evento adverso</h2>
 
 <ion-list radio-group>
      <p>Seleccione 1 o varias de las siguientes opciones con respecto al evento adverso</p>
-            <ion-list radio-group>
+            <ion-list radio-group [(ngModel)]="report.desagradable" name="desagradable">
                <ion-label>¿Era sólo desagradable?</ion-label>
                 <ion-row>
                       <ion-col>
@@ -429,7 +390,7 @@
 
 
 
-<ion-list radio-group>
+<ion-list radio-group [(ngModel)]="report.urgencia" name="urgencia">
       <ion-label>¿Requirió consulta médica o urgencias?</ion-label>
                 <ion-row>
                     <ion-col>
@@ -448,7 +409,7 @@
             </ion-row>
 </ion-list>
 
-<ion-list radio-group>
+<ion-list radio-group [(ngModel)]="report.icapacidad" name="icapacidad">
       <ion-label>¿Generó incapacidad médica?</ion-label>
                 <ion-row>
                     <ion-col>
@@ -468,7 +429,7 @@
  </ion-list>
 
 
-<ion-list radio-group>
+<ion-list radio-group [(ngModel)]="report.hospitaliza" name="hospitaliza">
     <ion-label>¿Ocasionó o prolongó hospitalización?</ion-label>
               <ion-row>
                   <ion-col>
@@ -487,7 +448,7 @@
           </ion-row>
 </ion-list>
 
-<ion-list radio-group>
+<ion-list radio-group [(ngModel)]="report.peligorVida" name="peligorVida">
     <ion-label>¿Amenazó la vida?</ion-label>
             <ion-row>
                 <ion-col>
@@ -508,10 +469,10 @@
 </ion-list>
 
 <ion-item>
-  <ion-label floating>
+  <ion-label floating >
       <ion-icon name="build" item-start class="text-primary"></ion-icon>
       Consumo de otros productos</ion-label>
-  <ion-select name="otrosProductos">
+  <ion-select name="otrosProductos" [(ngModel)]="report.consumoProductos" name="consumoProductos">
 
 <ion-option value="alcohol">Alcohol</ion-option>
 <ion-option value="cigarrillo">Cigarrillo</ion-option>
@@ -522,11 +483,17 @@
 </ion-item>
 
 <h2>Consecuencias y Evolución del evento adverso </h2>
-<button ion-button icon-only large round>
-  <ion-icon name="camera"></ion-icon>
-</button>
-<button ion-button >Subir Foto</button>
+<ion-row>
+  <ion-col col-6>
+    <ion-item>
+      <button ion-button icon-only large round (click)="capture()">
+        <ion-icon name="camera"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-col>
 
+</ion-row>
+<p aling="center"></p>
 <p aling="center"><img></p>
 
 <button ion-button icon-start ion-button block class="center3" (click)="enviar()">

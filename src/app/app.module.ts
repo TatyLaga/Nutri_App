@@ -21,6 +21,11 @@ import { ProvregisterProvider } from '../providers/provregister/provregister';
 import { AuthProvider } from '../providers/auth/auth';
 import { UserProvider } from '../providers/user/user';
 import { NaranfdaPage } from "../pages/naranfda/naranfda";
+import { RolPage } from "../pages/rol/rol";
+import { Home2Page } from "../pages/home2/home2";
+import { Report2otherPage } from "../pages/report2other/report2other";
+import {Camera} from '@ionic-native/camera/ngx';
+
 
 //Firebase
 import { AngularFireModule } from 'angularfire2';
@@ -43,7 +48,9 @@ import { PipesModule } from '../pipes/pipes.module';
     NaranjoPage,
     ReportPage,
     NaranfdaPage,
-
+    RolPage,
+    Home2Page,
+    Report2otherPage
   ],
   imports: [
     BrowserModule,
@@ -65,11 +72,15 @@ import { PipesModule } from '../pipes/pipes.module';
     HistoricalPage,
     NaranjoPage,
     ReportPage,
-    NaranfdaPage
+    NaranfdaPage,
+    RolPage,
+    Home2Page,
+    Report2otherPage
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    SplashScreen,Camera,
+
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProveedorcountryProvider,
     ProvreportProvider,

@@ -40,10 +40,7 @@ export class HistoricalPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad HistoricalPage');
 
-this.consul();
-this.showUserData();
-this.userData();
-this.dataTry()
+
 
 
   }
@@ -93,8 +90,7 @@ userData(){
     console.log("Hola maped",mapped);
     this.users = mapped;
 
-    var show = document.getElementById("showData")
-    show.innerHTML = `ok ${this.users}`
+
 
   },(err)=>{
      console.log("probleme : ", err)

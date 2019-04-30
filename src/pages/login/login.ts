@@ -7,6 +7,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
 import { UserProvider } from '../../providers/user/user';
+import { RolPage } from "../rol/rol";
 
 /**
  * Generated class for the LoginPage page.
@@ -27,7 +28,7 @@ export class LoginPage {
   password:string = "";
   loginError: string;
   name:string = "";
-  rol:string = "";
+  rol:'';
   user: any;
 
    constructor(public navCtrl: NavController, private db: AngularFireDatabase,
@@ -55,11 +56,11 @@ export class LoginPage {
 
 		this.auth.signInWithEmail(credentials)
 			.then(
-				() => this.navCtrl.setRoot(HomePage),
-        error => this.loginError = error.message
+        () =>
+              this.navCtrl.setRoot(RolPage),
+          error => this.loginError = error.message
 
       );
-
 
   }
 
@@ -74,4 +75,5 @@ auth.sendPasswordResetEmail(this.email).then(function() {
 });
 
   }
+
 }

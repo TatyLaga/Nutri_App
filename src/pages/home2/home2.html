@@ -1,0 +1,61 @@
+<!-- -->
+<ion-header>
+
+    <ion-navbar color="light">
+        <ion-title>
+          <img src="../../assets//imgs/LogoNutrivigilancia.png" height="52" (click)="home();" >
+          <a class="cerrarSesion" (click)="logOut();">Cerrar Sesión</a>
+
+      </ion-title>
+
+    </ion-navbar>
+
+  </ion-header>
+  <ion-content >
+
+  </ion-content>
+
+  <ion-content padding >
+    <ion-slides  autoplay="1000" loop="true" speed="1500" pager="true" (ionSlideDidChange)="slideChanged()" class="center3">
+      <ion-slide>
+        <img src="../../assets//imgs/index1.jpg" alt="img1">
+      </ion-slide>
+      <ion-slide>
+        <img src="../../assets//imgs/index2.jpg" alt="img2">
+      </ion-slide>
+      <ion-slide>
+        <img src="../../assets//imgs/index3.jpg" alt="img3">
+      </ion-slide>
+      <ion-slide>
+        <img src="../../assets//imgs/index4.jpg" alt="img4">
+      </ion-slide>
+    </ion-slides>
+    <h2 class="center2"><strong>App de Nutrivigilancia</strong> </h2>
+
+    <h3 id="correo">
+
+    </h3>
+
+
+    <h4 class="center">Aplicación para gestión y reporte de eventos adversos asociadas a
+      nutriciones artificiales (nutriciones enterales y parenterales), fórmulas
+      infantiles y suplementos dietarios.</h4>
+
+      <button ion-button icon-start ion-button block (click)="report();" class="myButton2">
+          <ion-icon name="ios-create"></ion-icon> <br> <label>Generar reporte</label>
+    </button>
+
+    <button ion-button icon-start ion-button block (click)="naranjo();" class="myButton" >
+          <ion-icon name="list-box"></ion-icon> <br> <label>Algoritmo Naranjo</label>
+       </button>
+
+    <button ion-button icon-start ion-button block (click)="fda();" class="myButton">
+              <ion-icon name="ios-paper"></ion-icon> <br> <label>Algoritmo FDA</label>
+    </button>
+
+    <button ion-button icon-start ion-button block (click)="historical();" class="myButton" >
+            <ion-icon name="ios-folder-open"></ion-icon> <br> <label>Histórico</label>
+    </button>
+
+
+  </ion-content>
