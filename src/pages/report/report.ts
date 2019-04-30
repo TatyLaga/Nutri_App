@@ -6,6 +6,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { ProvreportProvider } from "../../providers/provreport/provreport";
 import { NaranfdaPage } from '../naranfda/naranfda';
 import { HomePage } from '../home/home';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { storage } from 'firebase';
 
 
 
@@ -64,6 +66,7 @@ export class ReportPage {
   deptos: any;
   cie10: any;
   data: string;
+  captureDataUrl: string;
 
   textoBuscar = '';
 
@@ -73,7 +76,8 @@ export class ReportPage {
     public http: Http,
     private afd:AngularFireDatabase,
     public reportProvider : ProvreportProvider,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    private camera: Camera) {
 
 
     }
@@ -149,6 +153,26 @@ if (result > 30.0.toString()) {
 
 buscar(event){
  this.textoBuscar = event.value;
+
+}
+
+async capture() {
+  //setup camera options
+  try{
+    const cameraOptions: CameraOptions = {
+      quality: 50,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+   const result = await this.camera.getPicture(cameraOptions)
+    const image = `data:image/jpeg;base64,${result}`;
+    const pictures = storage().ref('pictures')
+    pictures.putString(image, 'data_url');
+  }
+  catch(e){
+    console.error(e);
+  }
 
 }
 

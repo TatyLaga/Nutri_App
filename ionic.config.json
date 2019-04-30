@@ -1,6 +1,9 @@
 {
-  "name": "NutriApp3",
-  "integrations": {},
+  "name": "NutriVigilancia",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular",
-  "id": "76e9ceec"
+  "id": "76e9ceec",
+  "app_id": ""
 }

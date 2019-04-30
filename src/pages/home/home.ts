@@ -9,7 +9,7 @@ import * as firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UserProvider } from '../../providers/user/user';
 import { Http } from '@angular/http';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { RegisterPage } from "../register/register";
 
@@ -29,18 +29,23 @@ export class HomePage {
   name: Array<any>;
   age: Array<any>;
   users: Observable<RegisterPage[]>;
+  profileData: AngularFireObject<any>;
+  user = {};
+  profile = {};
+
   constructor(public navCtrl: NavController,
     public dbUser: UserProvider ,public afAuth : AngularFireAuth,
     public navParams: NavParams,
     public http: Http,
-    public af: AngularFireDatabase) {
+    public af: AngularFireDatabase, public userProv: UserProvider) {
     this.checkUser = this.checkUser.bind(this);
     //get name
     this.name=navParams.get('nameU');
   }
   ionViewWillEnter(){
     firebase.auth().onAuthStateChanged(this.checkUser);
-
+    this.getUserFirstName();
+    console.log('The Users first name is ' + this.getUserFirstName());
   }
 
   checkUser(user) {
@@ -52,9 +57,12 @@ export class HomePage {
 
      console.log("user is logged in");
      console.log("user is logged in" + user.email);
+     var nameMail = document.getElementById('correo')
+     nameMail.innerHTML = `Bienvenido ${user.email}!`
      return;
 
    }
+
 
  }
 
@@ -94,10 +102,19 @@ export class HomePage {
     this.navCtrl.setRoot(HomePage);
   }
 
+  getCurrentUser() {
+    this.afAuth.authState.subscribe(data => {
+      console.log('info ' + data.displayName);
+      return data.uid;
+    });
 
-  //get data
-
-
-
+    this.userProv.getUser().valueChanges().subscribe((data)=>{
+      console.log("datas Loquis", data)
+    })
+  }
+  getUserFirstName() {
+    this.profileData = this.af.object(`users/` + this.getCurrentUser());
+    return this.profileData;
+  }
 
 }

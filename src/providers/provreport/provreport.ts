@@ -28,29 +28,29 @@ itemId:string;
     if(!this.userId) return;
     this.reports.userId = this.userId
 
-    this.reports = this._afDB.list(`/Reportes_Paciente/${this.userId}`);
-    return this.reports.push({report});
+    this.reports = this._afDB.list(`/Reports/${this.userId}/user_Reports`);
+    return this.reports.push({ report});
 }
 
 addNaranjo(naranjo: any): void {
-  if(!this.userId) return;
+
   this.naranjos.userId = this.userId
 
-  this.naranjos = this._afDB.list(`/Reportes_Paciente/${this.userId}/Algoritmo_Naranjo`);
-   this.naranjos.push({ naranjo});
+  this.naranjos = this._afDB.list(`/Reports/${this.userId}/algoritmo_Naranjos`);
+  return this.naranjos.push({ naranjo});
 }
 
 addFDA(fda: any) : void{
 
   this.fdas.userId = this.userId
 
-  this.fdas = this._afDB.list(`/Reportes_Paciente/Algoritmo_FDAs`);
-  return this.fdas.push({fda});
+  this.fdas = this._afDB.list(`/Reports/${this.userId}/Algoritmo_FDAs`);
+  return this.fdas.push({ fda});
 }
 
   getReportList() {
     if(!this.userId) return;
-    this.reports = this._afDB.list(`/Reportes_Paciente`);
+    this.reports = this._afDB.list(`/Reports`);
     return this.reports
 }
 
